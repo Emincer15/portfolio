@@ -28,7 +28,7 @@ const projects = [
     desc: [
       "North Atlantic Right Whales are critically endangered — their main causes of death are entanglement and ship strikes. The MARS Lab at WHOI designed thermal cameras that detected these whales, displaying data on a separate tablet in the ship's cabin. This was inconvenient: tablets emit light, and captains prefer dark cabins at night to reduce glare.",
       "I was tasked with integrating whale location data directly into the boat's existing chartplotter, eliminating the auxiliary tablet. Using a Raspberry Pi, I received whale detections via RabbitMQ from the cloud, formatted them into NMEA sentences, and transmitted them over RS-232 serial to the chartplotter.",
-      "After testing on a simulator, I validated the system on a real Garmin chartplotter, where detections appeared as AIS ATON targets labeled \u0022WHALE.\u0022 I then designed and 3D-printed a housing in Fusion360 for easy cabin installation, collaborating with end users in both Woods Hole and Germany.",
+      'After testing on a simulator, I validated the system on a real Garmin chartplotter, where detections appeared as AIS ATON targets labeled \'WHALE.\' I then designed and 3D-printed a housing in Fusion360 for easy cabin installation, collaborating with end users in both Woods Hole and Germany.',
     ],
     links: [
       { label: "Video", url: "https://youtu.be/zwbGnCj7czU" },
