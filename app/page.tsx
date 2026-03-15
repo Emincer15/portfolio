@@ -13,14 +13,14 @@ const SECTIONS = ["projects", "experience", "leadership", "education"] as const
 type Section = typeof SECTIONS[number]
 
 const COLORS: Record<string, string> = {
-  c2: "#1a2818", c4: "#282010", c5: "#1a2828",
-  ciBlue: "#1e2a4a", ciGreen: "#1a2e22", ciPurple: "#251e40",
-  ciAmber: "#2e2410", ciTeal: "#152828", ciCoral: "#2e1a18",
+  c2: "#e8f4e8", c4: "#f5f0e0", c5: "#e0eef5",
+  ciBlue: "#dce8f5", ciGreen: "#d8f0e0", ciPurple: "#ece8f8",
+  ciAmber: "#f5edd8", ciTeal: "#d8eff0", ciCoral: "#f5e0dc",
 }
 
 const projects = [
   {
-    id: "whoi", logo: WHOI_LOGO, logoBg: "#0a1628", color: "c5", redirect: null as string | null,
+    id: "whoi", logo: WHOI_LOGO, logoBg: "#ffffff", color: "c5", redirect: null as string | null,
     title: "Woods Hole Oceanographic Internship",
     date: "Summer 2024", category: "Marine Technology", award: "",
     photos: [WHOI_PHOTO_1, WHOI_PHOTO_2, WHOI_PHOTO_3],
@@ -38,7 +38,7 @@ const projects = [
     tech: ["Python", "Raspberry Pi", "RabbitMQ", "RS-232 Serial", "NMEA Sentences", "Fusion360", "3D Printing", "AIS Protocol"],
   },
   {
-    id: "ezpark", logo: EZPARK_LOGO, logoBg: "#1a1a10", color: "c4",
+    id: "ezpark", logo: EZPARK_LOGO, logoBg: "#f5f0e0", color: "c4",
     redirect: null as string | null,
     title: "E-Z Park", date: "Jan – May 2022", category: "Infrastructure / IoT",
     award: "Bronze Standard — CIJE Innovation Day 2022 · Engineering for Workplace Solutions Finalist",
@@ -54,7 +54,7 @@ const projects = [
     tech: ["Arduino", "NodeMCU", "ESP8266", "IR Sensors", "C++", "WiFi"],
   },
   {
-    id: "seatbelt", logo: "", logoBg: "#1a2818", color: "c2",
+    id: "seatbelt", logo: "", logoBg: "#e8f4e8", color: "c2",
     redirect: null as string | null,
     title: "Seatbelt Secure", date: "Jan – May 2023", category: "Safety / IoT",
     award: "Presentation Award — CIJE Innovation Day 2023",
@@ -70,20 +70,36 @@ const projects = [
     ],
     tech: ["Arduino", "Pressure Sensors", "RF Communication", "C++"],
   },
+  {
+    id: "stemjournal", logo: "", logoBg: "#ece8f8", color: "ciPurple",
+    redirect: null as string | null,
+    title: "STEM and Ethics Journal", date: "Sep 2023 – May 2025", category: "Publication / Leadership",
+    award: "Founder & Editor in Chief",
+    photos: [] as string[], photoCaptions: [] as string[],
+    desc: [
+      "The STEM and Ethics Journal is a student publication I founded to explore the intersection of scientific innovation and ethical responsibility. Each issue features in-depth articles on emerging technologies and interviews with scientists and researchers.",
+      "As Founder and Editor in Chief, I oversaw all aspects of production — soliciting and editing submissions, conducting interviews, formatting layouts, and personally printing each edition. The journal published 4 issues of approximately 6 articles each.",
+    ],
+    links: [
+      { label: "Spring 2024 Edition", url: "https://indd.adobe.com/view/713e9498-3b5c-4a94-9b4d-66b544c9e100" },
+      { label: "Fall 2024 Edition", url: "https://online.flippingbook.com/view/658557714/" },
+    ],
+    tech: ["Publishing", "Editing", "Layout Design", "Interviewing"],
+  },
 ]
 
-const awardPill: React.CSSProperties = { display: "inline-block", fontSize: 10, padding: "2px 7px", borderRadius: 12, background: "#1e2a1e", color: "#6fcf97", border: "1px solid #243224" }
-const divider: React.CSSProperties = { height: 1, background: "#1e1e1c", margin: "16px 0" }
-const secTitle: React.CSSProperties = { fontSize: 10, fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#555552", marginBottom: 14 }
-const card: React.CSSProperties = { background: "#1a1a18", border: "1px solid #252523", borderRadius: 10, padding: "14px 16px", marginBottom: 10 }
-const sLabel: React.CSSProperties = { fontSize: 10, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "#444442", marginBottom: 7 }
-const tag: React.CSSProperties = { fontSize: 10.5, padding: "2px 8px", borderRadius: 20, border: "1px solid #2a2a28", color: "#777774" }
-const techTag: React.CSSProperties = { fontSize: 11, padding: "2px 9px", borderRadius: 20, border: "1px solid #2a2a28", color: "#888884" }
-const linkBtn: React.CSSProperties = { display: "flex", alignItems: "center", gap: 5, padding: "6px 12px", background: "#1a1a18", border: "1px solid #2a2a28", borderRadius: 7, color: "#b0aca3", fontSize: 11.5, textDecoration: "none" }
+const awardPill: React.CSSProperties = { display: "inline-block", fontSize: 10, padding: "2px 7px", borderRadius: 12, background: "#e8f4ec", color: "#2e7d52", border: "1px solid #c8e6d0" }
+const divider: React.CSSProperties = { height: 1, background: "#e8e5de", margin: "16px 0" }
+const secTitle: React.CSSProperties = { fontSize: 10, fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#999894", marginBottom: 14 }
+const card: React.CSSProperties = { background: "#ffffff", border: "1px solid #e8e5de", borderRadius: 10, padding: "14px 16px", marginBottom: 10 }
+const sLabel: React.CSSProperties = { fontSize: 10, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "#aaa8a2", marginBottom: 7 }
+const tag: React.CSSProperties = { fontSize: 10.5, padding: "2px 8px", borderRadius: 20, border: "1px solid #ddd9d0", color: "#666660" }
+const techTag: React.CSSProperties = { fontSize: 11, padding: "2px 9px", borderRadius: 20, border: "1px solid #ddd9d0", color: "#555552" }
+const linkBtn: React.CSSProperties = { display: "flex", alignItems: "center", gap: 5, padding: "6px 12px", background: "#f4f2ee", border: "1px solid #ddd9d0", borderRadius: 7, color: "#444440", fontSize: 11.5, textDecoration: "none" }
 
 function NavLink({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
-    <div onClick={onClick} style={{ fontSize: 12.5, color: active ? "#e8e6df" : "#666662", padding: "6px 10px", borderRadius: 6, cursor: "pointer", background: active ? "#1e1e1c" : "transparent", fontWeight: active ? 500 : 400 }}>
+    <div onClick={onClick} style={{ fontSize: 12.5, color: active ? "#1a1a18" : "#888884", padding: "6px 10px", borderRadius: 6, cursor: "pointer", background: active ? "#e8e5de" : "transparent", fontWeight: active ? 500 : 400 }}>
       {label}
     </div>
   )
@@ -95,16 +111,16 @@ function ExpCard({ icon, iconBg, title, meta, bullets }: { icon: string; iconBg:
       <div style={{ display: "flex", alignItems: "flex-start", gap: 11, marginBottom: 5 }}>
         <div style={{ width: 32, height: 32, borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0, background: iconBg }}>{icon}</div>
         <div>
-          <div style={{ fontSize: 13, fontWeight: 500, color: "#e8e4db" }}>{title}</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 10px", fontSize: 11, color: "#555552", marginTop: 2 }}>
+          <div style={{ fontSize: 13, fontWeight: 500, color: "#1a1a18" }}>{title}</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 10px", fontSize: 11, color: "#888884", marginTop: 2 }}>
             {meta.map((m, i) => <span key={i}>{m}</span>)}
           </div>
         </div>
       </div>
       <ul style={{ listStyle: "none", paddingLeft: 0 }}>
         {bullets.map((b, i) => (
-          <li key={i} style={{ fontSize: 12, color: "#888884", lineHeight: 1.55, paddingLeft: 12, position: "relative", marginBottom: 3 }}>
-            <span style={{ position: "absolute", left: 0, color: "#333330" }}>–</span>{b}
+          <li key={i} style={{ fontSize: 12, color: "#555552", lineHeight: 1.55, paddingLeft: 12, position: "relative", marginBottom: 3 }}>
+            <span style={{ position: "absolute", left: 0, color: "#aaa8a2" }}>–</span>{b}
           </li>
         ))}
       </ul>
@@ -129,7 +145,7 @@ function ProjectThumb({ p }: { p: typeof projects[0] }) {
     )
   }
   return (
-    <div style={{ height: 130, background: COLORS[p.color], display: "flex", alignItems: "center", justifyContent: "center", fontSize: 44, position: "relative" }}>
+    <div style={{ height: 130, background: COLORS[p.color as keyof typeof COLORS] ?? "#f0ede4", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 44, position: "relative" }}>
       {"?"}
     </div>
   )
@@ -139,7 +155,7 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
   const p = projects.find(x => x.id === id)!
   return (
     <div>
-      <button onClick={onBack} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11.5, color: "#666662", cursor: "pointer", marginBottom: 14, padding: "4px 0", background: "none", border: "none" }}>← All projects</button>
+      <button onClick={onBack} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11.5, color: "#888884", cursor: "pointer", marginBottom: 14, padding: "4px 0", background: "none", border: "none" }}>← All projects</button>
       <div style={{ display: "flex", gap: 6, height: 180, borderRadius: 10, overflow: "hidden", background: p.logoBg }}>
         {p.logo && (
           <div style={{ width: 160, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 16, background: p.logoBg }}>
@@ -156,8 +172,8 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
         )}
       </div>
       <div style={{ padding: "18px 0 40px" }}>
-        <div style={{ fontSize: 20, fontWeight: 500, color: "#f0ede4", marginBottom: 6 }}>{p.title}</div>
-        <div style={{ fontSize: 12, color: "#666662", display: "flex", flexWrap: "wrap", gap: "4px 12px", marginBottom: 12 }}>
+        <div style={{ fontSize: 20, fontWeight: 500, color: "#1a1a18", marginBottom: 6 }}>{p.title}</div>
+        <div style={{ fontSize: 12, color: "#888884", display: "flex", flexWrap: "wrap", gap: "4px 12px", marginBottom: 12 }}>
           <span>📅 {p.date}</span><span>📁 {p.category}</span>
         </div>
         {p.award && <><span style={awardPill}>🏆 {p.award}</span><br /><br /></>}
@@ -171,7 +187,7 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
                   <div style={{ width: "100%", height: 130, overflow: "hidden" }}>
                     <img src={src} alt={p.photoCaptions[i]} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                   </div>
-                  <div style={{ fontSize: 10, color: "#555552", padding: "5px 7px", background: "#1a1a18", textAlign: "center" }}>{p.photoCaptions[i]}</div>
+                  <div style={{ fontSize: 10, color: "#888884", padding: "5px 7px", background: "#f4f2ee", textAlign: "center" }}>{p.photoCaptions[i]}</div>
                 </div>
               ))}
             </div>
@@ -179,7 +195,7 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
         )}
         <div style={divider} />
         <div style={{ ...secTitle, marginBottom: 8 }}>Overview</div>
-        {p.desc.map((t, i) => <p key={i} style={{ fontSize: 13, color: "#999894", lineHeight: 1.75, marginBottom: 13 }}>{t}</p>)}
+        {p.desc.map((t, i) => <p key={i} style={{ fontSize: 13, color: "#555552", lineHeight: 1.75, marginBottom: 13 }}>{t}</p>)}
         {p.tech.length > 0 && (
           <>
             <div style={divider} />
@@ -211,12 +227,12 @@ function ProjectsSection() {
       <div style={secTitle}>Projects</div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))", gap: 10 }}>
         {projects.map(p => (
-          <div key={p.id} style={{ background: "#1a1a18", border: "1px solid #252523", borderRadius: 10, overflow: "hidden", cursor: "pointer" }}
+          <div key={p.id} style={{ background: "#ffffff", border: "1px solid #e8e5de", borderRadius: 10, overflow: "hidden", cursor: "pointer" }}
             onClick={() => p.redirect ? window.open(p.redirect, "_blank") : setDetailId(p.id)}>
             <ProjectThumb p={p} />
-            <div style={{ padding: "11px 13px", borderTop: "1px solid #1e1e1c" }}>
-              <div style={{ fontSize: 13, fontWeight: 500, color: "#e8e4db", marginBottom: 3 }}>{p.title}</div>
-              <div style={{ fontSize: 11, color: "#555552" }}>📅 {p.date}</div>
+            <div style={{ padding: "11px 13px", borderTop: "1px solid #e8e5de" }}>
+              <div style={{ fontSize: 13, fontWeight: 500, color: "#1a1a18", marginBottom: 3 }}>{p.title}</div>
+              <div style={{ fontSize: 11, color: "#888884" }}>📅 {p.date}</div>
               {p.award && <span style={{ ...awardPill, marginTop: 4, display: "inline-block" }}>🏆 {p.award.split("·")[0].trim()}</span>}
             </div>
           </div>
@@ -229,24 +245,24 @@ function ProjectsSection() {
 export default function Home() {
   const [section, setSection] = useState<Section>("projects")
   return (
-    <div style={{ background: "#111110", color: "#e8e6df", fontFamily: "'Inter', sans-serif", fontSize: 13, lineHeight: 1.6, borderRadius: 12, overflow: "hidden", width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
+    <div style={{ background: "#f4f2ee", color: "#1a1a18", fontFamily: "'Inter', sans-serif", fontSize: 13, lineHeight: 1.6, borderRadius: 12, overflow: "hidden", width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
       {/* TOP NAV */}
-      <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 20px", borderBottom: "1px solid #1e1e1c", background: "#111110", flexShrink: 0 }}>
-        <span style={{ fontSize: 12, color: "#555552" }}>
-          <span style={{ color: "#b0aca3", fontWeight: 500 }}>Etan Mincer</span>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 20px", borderBottom: "1px solid #e8e5de", background: "#f4f2ee", flexShrink: 0 }}>
+        <span style={{ fontSize: 12, color: "#888884" }}>
+          <span style={{ color: "#1a1a18", fontWeight: 500 }}>Etan Mincer</span>
           &nbsp;·&nbsp; Portfolio
         </span>
       </div>
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         {/* SIDEBAR */}
-        <div style={{ width: 240, flexShrink: 0, padding: "22px 18px", borderRight: "1px solid #1e1e1c", overflowY: "auto", display: "flex", flexDirection: "column", gap: 20 }}>
+        <div style={{ width: 240, flexShrink: 0, padding: "22px 18px", borderRight: "1px solid #e8e5de", background: "#faf9f6", overflowY: "auto", display: "flex", flexDirection: "column", gap: 20 }}>
           <div>
-            <div style={{ fontSize: 17, fontWeight: 500, color: "#f0ede4" }}>Etan A. Mincer</div>
-            <div style={{ fontSize: 11, color: "#555552", marginTop: 2 }}>Princeton ECE · Cybersecurity</div>
+            <div style={{ fontSize: 17, fontWeight: 500, color: "#1a1a18" }}>Etan A. Mincer</div>
+            <div style={{ fontSize: 11, color: "#888884", marginTop: 2 }}>Princeton ECE · Cybersecurity</div>
           </div>
           <div>
             <div style={sLabel}>About</div>
-            <div style={{ fontSize: 11.5, color: "#888884", lineHeight: 1.65 }}>I'm Etan Mincer, an Electrical and Computer Engineering student at Princeton University with a focus on embedded systems and cybersecurity.</div>
+            <div style={{ fontSize: 11.5, color: "#555552", lineHeight: 1.65 }}>{"I'm Etan Mincer, an Electrical and Computer Engineering student at Princeton University \uD83D\uDC2F with a focus on embedded systems \u26A1 and cybersecurity \uD83D\uDD12."}</div>
           </div>
           <div>
             <div style={sLabel}>Navigate</div>
@@ -256,10 +272,10 @@ export default function Home() {
           </div>
           <div>
             <div style={sLabel}>Contact</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 11, color: "#777774" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 11, color: "#555552" }}>
               <span>✉ em8052@princeton.edu</span>
-              <span>🔗 <a href="https://linkedin.com/in/etan-mincer" target="_blank" rel="noreferrer" style={{ color: "#6a9fd8", textDecoration: "none" }}>LinkedIn</a></span>
-              <span>🐙 <a href="https://github.com/Emincer15" target="_blank" rel="noreferrer" style={{ color: "#6a9fd8", textDecoration: "none" }}>GitHub</a></span>
+              <span>🔗 <a href="https://linkedin.com/in/etan-mincer" target="_blank" rel="noreferrer" style={{ color: "#3b7cc9", textDecoration: "none" }}>LinkedIn</a></span>
+              <span>🐙 <a href="https://github.com/Emincer15" target="_blank" rel="noreferrer" style={{ color: "#3b7cc9", textDecoration: "none" }}>GitHub</a></span>
             </div>
           </div>
           <div>
@@ -310,11 +326,11 @@ export default function Home() {
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 11, marginBottom: 5 }}>
                   <div style={{ width: 32, height: 32, borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0, background: COLORS.ciAmber }}>🏫</div>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 500, color: "#e8e4db" }}>The Frisch School</div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 10px", fontSize: 11, color: "#555552", marginTop: 2 }}><span>📅 Grad May 2025</span><span>📍 Paramus, NJ</span></div>
+                    <div style={{ fontSize: 13, fontWeight: 500, color: "#1a1a18" }}>The Frisch School</div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 10px", fontSize: 11, color: "#888884", marginTop: 2 }}><span>📅 Grad May 2025</span><span>📍 Paramus, NJ</span></div>
                   </div>
                 </div>
-                <p style={{ fontSize: 12, color: "#888884", lineHeight: 1.55, marginBottom: 8 }}>AP Physics C · AP BC Calculus · AP Statistics · AP Macroeconomics · AP Microeconomics</p>
+                <p style={{ fontSize: 12, color: "#555552", lineHeight: 1.55, marginBottom: 8 }}>AP Physics C · AP BC Calculus · AP Statistics · AP Macroeconomics · AP Microeconomics</p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                   {["Salutatorian","National Merit Scholar Commendation","AP Scholar with Distinction","SAT 1580"].map(a => <span key={a} style={awardPill}>{a}</span>)}
                 </div>
