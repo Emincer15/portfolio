@@ -197,7 +197,7 @@ function ProjectsSection() {
 export default function Home() {
   const [section, setSection] = useState<Section>("projects")
   return (
-    <div style={{ background: "#111110", color: "#e8e6df", fontFamily: "'Inter', sans-serif", fontSize: 13, lineHeight: 1.6, borderRadius: 12, overflow: "hidden", width: "100vw", height: "100vh", display: "flex", flexDirection: "column" }}>
+    <div style={{ background: "#111110", color: "#e8e6df", fontFamily: "'Inter', sans-serif", fontSize: 13, lineHeight: 1.6, borderRadius: 12, overflow: "hidden", width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
       {/* TOP NAV */}
       <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 20px", borderBottom: "1px solid #1e1e1c", background: "#111110", flexShrink: 0 }}>
         <span style={{ fontSize: 12, color: "#555552" }}>
