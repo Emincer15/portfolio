@@ -39,17 +39,36 @@ const projects = [
   },
   {
     id: "ezpark", logo: EZPARK_LOGO, logoBg: "#1a1a10", color: "c4",
-    redirect: "https://elianawolf1.wixsite.com/e-zpark",
+    redirect: null as string | null,
     title: "E-Z Park", date: "Jan – May 2022", category: "Infrastructure / IoT",
-    award: "Bronze Standard · Engineering for Workplace Solutions Finalist",
-    photos: [] as string[], photoCaptions: [] as string[], desc: [] as string[], links: [] as {label:string,url:string}[], tech: [] as string[],
+    award: "Bronze Standard — CIJE Innovation Day 2022 · Engineering for Workplace Solutions Finalist",
+    photos: [] as string[], photoCaptions: [] as string[],
+    desc: [
+      "E-Z Park is a smart parking lot management system designed to reduce the time drivers spend searching for available spaces — a major source of urban traffic congestion.",
+      "The system uses infrared sensors placed above each parking spot to detect occupancy in real time. Data is collected by Arduino microcontrollers and transmitted wirelessly via NodeMCU (ESP8266) to a central display showing a live map of available spots.",
+      "The project was presented to New Jersey State Senators at the Teach NJ dinner and earned a Bronze Standard award at CIJE Innovation Day 2022.",
+    ],
+    links: [
+      { label: "Project Site", url: "https://elianawolf1.wixsite.com/e-zpark" },
+    ],
+    tech: ["Arduino", "NodeMCU", "ESP8266", "IR Sensors", "C++", "WiFi"],
   },
   {
     id: "seatbelt", logo: "", logoBg: "#1a2818", color: "c2",
-    redirect: "https://barbarasasson.wixsite.com/seatbelt-secure",
+    redirect: null as string | null,
     title: "Seatbelt Secure", date: "Jan – May 2023", category: "Safety / IoT",
     award: "Presentation Award — CIJE Innovation Day 2023",
-    photos: [] as string[], photoCaptions: [] as string[], desc: [] as string[], links: [] as {label:string,url:string}[], tech: [] as string[],
+    photos: ["/carseat.jpg"] as string[],
+    photoCaptions: ["Smart car seat with pressure & buckle detection"] as string[],
+    desc: [
+      "Seatbelt Secure addresses a critical child safety issue: parents occasionally forget that a child is buckled in a car seat, leading to dangerous heatstroke situations.",
+      "The system uses pressure sensors embedded in the car seat to detect child presence, combined with a buckle sensor to verify whether the seatbelt is fastened. An RF communication module transmits alerts to a receiver in the car, warning the driver if the child is detected but the seat is not buckled — or if the car is left with the child still strapped in.",
+      "The project earned a Presentation Award at CIJE Innovation Day 2023.",
+    ],
+    links: [
+      { label: "Project Site", url: "https://barbarasasson.wixsite.com/seatbelt-secure" },
+    ],
+    tech: ["Arduino", "Pressure Sensors", "RF Communication", "C++"],
   },
 ]
 
@@ -94,18 +113,24 @@ function ExpCard({ icon, iconBg, title, meta, bullets }: { icon: string; iconBg:
 }
 
 function ProjectThumb({ p }: { p: typeof projects[0] }) {
+  // If project has photos, use the first photo as thumbnail background
+  if (p.photos.length > 0 && !p.logo) {
+    return (
+      <div style={{ height: 130, position: "relative", overflow: "hidden" }}>
+        <img src={p.photos[0]} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      </div>
+    )
+  }
   if (p.logo) {
     return (
       <div style={{ height: 130, background: p.logoBg, display: "flex", alignItems: "center", justifyContent: "center", padding: 16, position: "relative" }}>
         <img src={p.logo} alt={p.title} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
-        {p.redirect && <span style={{ position: "absolute", bottom: 7, left: 8, fontSize: 9.5, padding: "1px 7px", borderRadius: 20, background: "rgba(255,255,255,.07)", color: "#777", border: "1px solid rgba(255,255,255,.07)" }}>↗ external</span>}
       </div>
     )
   }
   return (
     <div style={{ height: 130, background: COLORS[p.color], display: "flex", alignItems: "center", justifyContent: "center", fontSize: 44, position: "relative" }}>
-      🪑
-      {p.redirect && <span style={{ position: "absolute", bottom: 7, left: 8, fontSize: 9.5, padding: "1px 7px", borderRadius: 20, background: "rgba(255,255,255,.07)", color: "#777", border: "1px solid rgba(255,255,255,.07)" }}>↗ external</span>}
+      {"?"}
     </div>
   )
 }
@@ -116,14 +141,19 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
     <div>
       <button onClick={onBack} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11.5, color: "#666662", cursor: "pointer", marginBottom: 14, padding: "4px 0", background: "none", border: "none" }}>← All projects</button>
       <div style={{ display: "flex", gap: 6, height: 180, borderRadius: 10, overflow: "hidden", background: p.logoBg }}>
-        <div style={{ width: 160, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
-          {p.logo && <img src={p.logo} alt={p.title} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />}
-        </div>
+        {p.logo && (
+          <div style={{ width: 160, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 16, background: p.logoBg }}>
+            <img src={p.logo} alt={p.title} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+          </div>
+        )}
         {p.photos.map((src, i) => (
-          <div key={i} style={{ flex: 1, overflow: "hidden" }}>
-            <img src={src} alt={p.photoCaptions[i]} style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.85 }} />
+          <div key={i} style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
+            <img src={src} alt={p.photoCaptions[i]} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: 0.85 }} />
           </div>
         ))}
+        {!p.logo && p.photos.length === 0 && (
+          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: COLORS[p.color] }} />
+        )}
       </div>
       <div style={{ padding: "18px 0 40px" }}>
         <div style={{ fontSize: 20, fontWeight: 500, color: "#f0ede4", marginBottom: 6 }}>{p.title}</div>
@@ -135,10 +165,12 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
           <>
             <div style={divider} />
             <div style={{ ...secTitle, marginBottom: 8 }}>Photos</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 7, marginBottom: 4 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(160px,1fr))", gap: 7, marginBottom: 4 }}>
               {p.photos.map((src, i) => (
                 <div key={i} style={{ borderRadius: 7, overflow: "hidden", border: "1px solid #252523" }}>
-                  <img src={src} alt={p.photoCaptions[i]} style={{ width: "100%", height: 110, objectFit: "cover", display: "block" }} />
+                  <div style={{ width: "100%", height: 130, overflow: "hidden" }}>
+                    <img src={src} alt={p.photoCaptions[i]} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  </div>
                   <div style={{ fontSize: 10, color: "#555552", padding: "5px 7px", background: "#1a1a18", textAlign: "center" }}>{p.photoCaptions[i]}</div>
                 </div>
               ))}
@@ -208,7 +240,6 @@ export default function Home() {
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         {/* SIDEBAR */}
         <div style={{ width: 240, flexShrink: 0, padding: "22px 18px", borderRight: "1px solid #1e1e1c", overflowY: "auto", display: "flex", flexDirection: "column", gap: 20 }}>
-          <div style={{ width: 48, height: 48, borderRadius: "50%", background: "linear-gradient(135deg,#2a2a6a,#5a4ab7)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17, fontWeight: 500, color: "#fff" }}>EM</div>
           <div>
             <div style={{ fontSize: 17, fontWeight: 500, color: "#f0ede4" }}>Etan A. Mincer</div>
             <div style={{ fontSize: 11, color: "#555552", marginTop: 2 }}>Princeton ECE · Cybersecurity</div>
@@ -227,8 +258,8 @@ export default function Home() {
             <div style={sLabel}>Contact</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 11, color: "#777774" }}>
               <span>✉ em8052@princeton.edu</span>
-              <span>📞 917-750-6238</span>
               <span>🔗 <a href="https://linkedin.com/in/etan-mincer" target="_blank" rel="noreferrer" style={{ color: "#6a9fd8", textDecoration: "none" }}>LinkedIn</a></span>
+              <span>🐙 <a href="https://github.com/Emincer15" target="_blank" rel="noreferrer" style={{ color: "#6a9fd8", textDecoration: "none" }}>GitHub</a></span>
             </div>
           </div>
           <div>
@@ -246,7 +277,7 @@ export default function Home() {
           <div>
             <div style={sLabel}>Interests</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-              {["Club Swim","Lifting","Skiing","Saxophone","Hiking","Cooking"].map(t => <span key={t} style={tag}>{t}</span>)}
+              {["Club Swim","Skiing","Saxophone","Hiking","Cooking"].map(t => <span key={t} style={tag}>{t}</span>)}
             </div>
           </div>
         </div>
