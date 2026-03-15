@@ -253,9 +253,10 @@ export default function Home() {
       </div>
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         {/* SIDEBAR */}
-        <div style={{ width: 240, flexShrink: 0, padding: "22px 18px", borderRight: "1px solid #e8e5de", background: "#faf9f6", overflowY: "auto", display: "flex", flexDirection: "column", gap: 20 }}>
-          <div>
-            <div style={{ fontSize: 17, fontWeight: 500, color: "#1a1a18" }}>Etan A. Mincer</div>
+  <div style={{ width: 240, flexShrink: 0, padding: "22px 18px", borderRight: "1px solid #e8e5de", background: "#faf9f6", overflowY: "auto", display: "flex", flexDirection: "column", gap: 20 }}>
+  <img src="/headshot.jpg" alt="Etan Mincer" style={{ width: 64, height: 64, borderRadius: "50%", objectFit: "cover", objectPosition: "center 10%", border: "2px solid #e8e5de", display: "block" }} />
+  <div>
+  <div style={{ fontSize: 17, fontWeight: 500, color: "#1a1a18" }}>Etan A. Mincer</div>
             <div style={{ fontSize: 11, color: "#888884", marginTop: 2 }}>Princeton ECE · Cybersecurity</div>
           </div>
           <div>
