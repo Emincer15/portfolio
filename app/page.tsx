@@ -21,7 +21,7 @@ const COLORS: Record<string, string> = {
 const projects = [
   {
     id: "whoi", logo: WHOI_LOGO, logoBg: "#ffffff", color: "c5", redirect: null as string | null,
-    title: "Woods Hole Oceanographic Internship",
+    title: "Woods Hole Oceanographic Institute Internship",
     date: "Summer 2024", category: "Marine Technology", award: "",
     photos: [WHOI_PHOTO_1, WHOI_PHOTO_2, WHOI_PHOTO_3],
     photoCaptions: ["Raspberry Pi + chartplotter", "WHALE AIS on Garmin", "3D-printed housing"],
@@ -155,18 +155,18 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
     <div>
       <button onClick={onBack} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11.5, color: "#888884", cursor: "pointer", marginBottom: 14, padding: "4px 0", background: "none", border: "none" }}>← All projects</button>
       <div style={{ display: "flex", gap: 6, height: 180, borderRadius: 10, overflow: "hidden", background: p.logoBg }}>
-        {p.logo && (
-          <div style={{ width: 160, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 16, background: p.logoBg }}>
+        {p.photos.length > 0 ? (
+          p.photos.map((src, i) => (
+            <div key={i} style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
+              <img src={src} alt={p.photoCaptions[i]} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: 0.85 }} />
+            </div>
+          ))
+        ) : p.logo ? (
+          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, background: p.logoBg }}>
             <img src={p.logo} alt={p.title} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
           </div>
-        )}
-        {p.photos.map((src, i) => (
-          <div key={i} style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
-            <img src={src} alt={p.photoCaptions[i]} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: 0.85 }} />
-          </div>
-        ))}
-        {!p.logo && p.photos.length === 0 && (
-          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: COLORS[p.color] }} />
+        ) : (
+          <div style={{ flex: 1, background: COLORS[p.color] }} />
         )}
       </div>
       <div style={{ padding: "18px 0 40px" }}>
@@ -254,7 +254,7 @@ export default function Home() {
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         {/* SIDEBAR */}
   <div style={{ width: 240, flexShrink: 0, padding: "22px 18px", borderRight: "1px solid #e8e5de", background: "#faf9f6", overflowY: "auto", display: "flex", flexDirection: "column", gap: 20 }}>
-  <img src="/headshot.jpg" alt="Etan Mincer" style={{ width: 64, height: 64, borderRadius: "50%", objectFit: "cover", objectPosition: "center 10%", border: "2px solid #e8e5de", display: "block" }} />
+  <img src="/headshot.jpg" alt="Etan Mincer" style={{ width: 64, height: 64, minWidth: 64, minHeight: 64, borderRadius: "50%", objectFit: "cover", objectPosition: "center 10%", border: "2px solid #e8e5de", display: "block", flexShrink: 0 }} />
   <div>
   <div style={{ fontSize: 17, fontWeight: 500, color: "#1a1a18" }}>Etan A. Mincer</div>
             <div style={{ fontSize: 11, color: "#888884", marginTop: 2 }}>Princeton ECE · Cybersecurity</div>
