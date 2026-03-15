@@ -71,7 +71,7 @@ const projects = [
     tech: ["Arduino", "Pressure Sensors", "RF Communication", "C++"],
   },
   {
-    id: "stemjournal", logo: "", logoBg: "#ece8f8", color: "ciPurple",
+    id: "stemjournal", logo: "/stem-journal-cover.jpg", logoBg: "#f5edd8", color: "ciPurple",
     redirect: null as string | null,
     title: "STEM and Ethics Journal", date: "Sep 2023 – May 2025", category: "Publication / Leadership",
     award: "Founder & Editor in Chief",
@@ -262,7 +262,7 @@ export default function Home() {
           </div>
           <div>
             <div style={sLabel}>About</div>
-            <div style={{ fontSize: 11.5, color: "#555552", lineHeight: 1.65 }}>{"I'm Etan Mincer, an Electrical and Computer Engineering student at Princeton University \uD83D\uDC2F with a focus on embedded systems \u26A1 and cybersecurity \uD83D\uDD12."}</div>
+            <div style={{ fontSize: 11.5, color: "#555552", lineHeight: 1.65 }}>{"I'm Etan Mincer, an Electrical and Computer Engineering student at Princeton University \uD83D\uDC05 with a focus on embedded systems \u26A1 and cybersecurity \uD83D\uDD12."}</div>
           </div>
           <div>
             <div style={sLabel}>Navigate</div>
