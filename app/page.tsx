@@ -94,10 +94,10 @@ function ExpCard({ icon, iconBg, title, meta, bullets }: { icon: string; iconBg:
 }
 
 function ProjectThumb({ p }: { p: typeof projects[0] }) {
-  if (p.photos.length > 1) {
+  if (p.photos.length > 0) {
     return (
       <div style={{ height: 130, overflow: "hidden", position: "relative" }}>
-        <img src={p.photos[1]} alt={p.photoCaptions[1]} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <img src={p.photos[0]} alt={p.photoCaptions[0]} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         {p.redirect && <span style={{ position: "absolute", bottom: 7, left: 8, fontSize: 9.5, padding: "1px 7px", borderRadius: 20, background: "rgba(255,255,255,.07)", color: "#777", border: "1px solid rgba(255,255,255,.07)" }}>↗ external</span>}
       </div>
     )
@@ -124,9 +124,6 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
     <div>
       <button onClick={onBack} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11.5, color: "#666662", cursor: "pointer", marginBottom: 14, padding: "4px 0", background: "none", border: "none" }}>← All projects</button>
       <div style={{ display: "flex", gap: 6, height: 180, borderRadius: 10, overflow: "hidden", background: p.logoBg }}>
-        <div style={{ width: 160, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
-          {p.logo && <img src={p.logo} alt={p.title} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />}
-        </div>
         {p.photos.map((src, i) => (
           <div key={i} style={{ flex: 1, overflow: "hidden" }}>
             <img src={src} alt={p.photoCaptions[i]} style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.85 }} />
