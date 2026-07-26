@@ -86,6 +86,20 @@ const projects = [
     ],
     tech: ["Publishing", "Editing", "Layout Design", "Interviewing"],
   },
+  {
+    id: "saprio", logo: "/saprio-logo.jpg", logoBg: "#ffffff", color: "ciBlue",
+    redirect: null as string | null,
+    title: "Saprio Lab @ Princeton Precision Health", date: "May – August 2026", category: "Machine Learning / Healthcare",
+    award: "",
+    photos: [] as string[], photoCaptions: [] as string[],
+    desc: [
+      "Collaborated with researchers at Saprio Lab and Apple Health to develop personalized predictive models for surgical outcomes using electronic health records (EHR) and wearable data.",
+      "Employed machine learning techniques to analyze complex datasets, enhancing the accuracy of predictive models for patient risk stratification and surgical planning.",
+      "Utilized SQL and Python for data manipulation, analysis, and feature engineering, contributing to innovative research in precision health technology and advancing healthcare outcomes.",
+    ],
+    links: [],
+    tech: ["Python", "SQL", "Machine Learning", "EHR Data", "Wearable Data Analysis", "Data Science"],
+  },
 ]
 
 const awardPill: React.CSSProperties = { display: "inline-block", fontSize: 10, padding: "2px 7px", borderRadius: 12, background: "#e8f4ec", color: "#2e7d52", border: "1px solid #c8e6d0" }
