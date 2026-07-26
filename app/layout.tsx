@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Etan Mincer — Portfolio',
@@ -13,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
       </head>
-      <body style={{ margin: 0, padding: 0, background: '#111110', height: '100vh', overflow: 'hidden' }}>
+        <body style={{ margin: 0, padding: 0, background: '#f4f2ee', height: '100vh', overflow: 'hidden' }}>
         {children}
       </body>
     </html>
