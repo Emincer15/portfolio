@@ -403,7 +403,7 @@ export default function Home() {
                 <div style={{ flex: 1, minWidth: 240 }}>
                   <p style={aboutP}>{"I'm Etan Mincer, an Electrical and Computer Engineering student at Princeton University \uD83D\uDC05 with a focus on embedded systems \u26A1 and cybersecurity \uD83D\uDD12."}</p>
                   <p style={aboutP}>I am interested in leveraging engineering technologies for purposeful, mission-driven change: ensuring people&apos;s safety and freedom, and protecting the democratic institutions that both depend on.</p>
-                  <p style={{ ...aboutP, marginBottom: 0 }}>That is what draws me to embedded systems and security in particular. They are the layers people rely on without thinking about them, and where a failure costs far more than convenience.</p>
+                  <p style={{ ...aboutP, marginBottom: 0 }}>This is what draws me to cybersecurity, software engineering, and embedded systems in particular. They are the layers people rely on without thinking about them, and where a failure costs far more than convenience.</p>
                 </div>
               </div>
             </div>
@@ -413,7 +413,7 @@ export default function Home() {
             <div>
               <div style={secTitle}>Other Experience / Leadership</div>
               <ExpCard icon="⚡" iconBg={COLORS.ciBlue} title="Electrical Engineer — Princeton Electric Speedboating" meta={["📅 Oct 2025 – Present","📍 Princeton, NJ"]} bullets={["Designed innovative Low Voltage communication systems for manned-electrical speedboats, enhancing operational efficiency.","Assisted in the development of storage pipelines and SD card backup systems to ensure data integrity.","Utilized C++, KiCad, and coding skills to create reliable electrical engineering solutions."]} />
-              <ExpCard icon="📋" iconBg={COLORS.ciPurple} title="Consulting Project Manager — TAMID Group at Princeton" meta={["📅 Dec 2025 – Present","📍 Princeton, NJ","👥 Member Sep – Dec 2025"]} bullets={["Organizing consulting projects with Israeli companies, overseeing task completion for 7–10 students."]} />
+              <ExpCard icon="📋" iconBg={COLORS.ciPurple} title="Consulting Project Manager — TAMID Group at Princeton" meta={["📅 Sep 2025 – Present","📍 Princeton, NJ","👥 Project Manager since Dec 2025"]} bullets={["Organizing consulting projects with Israeli companies, overseeing task completion for 7–10 students."]} />
               <ExpCard icon="📰" iconBg={COLORS.ciAmber} title="Founder & Editor in Chief — STEM and Ethics Journal" meta={["📅 Sep 2023 – May 2025","📍 Paramus, NJ"]} bullets={["Founded journal exploring STEM innovations and ethical implications; conducted scientist interviews.","Published 4 issues (~6 articles each), personally formatting and printing each edition."]} />
               <ExpCard icon="🤖" iconBg={COLORS.ciCoral} title="FTC Outreach Captain · VEX COO & Coding Captain — Frisch Cougears" meta={["📅 May 2022 – May 2025","📍 Paramus, NJ"]} bullets={["Led robotics initiatives at three elementary schools (~60 students), visiting biweekly.","Assisted FTC software including HuskyLens integration for autonomous object detection.","Oversaw five VEX teams (~40 students); designed competitions to benchmark performance."]} />
             </div>
