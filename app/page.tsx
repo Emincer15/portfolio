@@ -143,6 +143,7 @@ const secTitle: React.CSSProperties = { fontSize: 10, fontWeight: 500, letterSpa
 const card: React.CSSProperties = { background: "#ffffff", border: "1px solid #e8e5de", borderRadius: 10, padding: "14px 16px", marginBottom: 10 }
 const sLabel: React.CSSProperties = { fontSize: 10, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "#aaa8a2", marginBottom: 7 }
 const tag: React.CSSProperties = { fontSize: 10.5, padding: "2px 8px", borderRadius: 20, border: "1px solid #ddd9d0", color: "#666660" }
+const aboutP: React.CSSProperties = { fontSize: 16, color: "#555552", lineHeight: 1.8, margin: "0 0 15px" }
 const backBtn: React.CSSProperties = { display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11.5, color: "#888884", cursor: "pointer", marginBottom: 14, padding: "4px 0", background: "none", border: "none" }
 const techTag: React.CSSProperties = { fontSize: 11, padding: "2px 9px", borderRadius: 20, border: "1px solid #ddd9d0", color: "#555552" }
 const linkBtn: React.CSSProperties = { display: "flex", alignItems: "center", gap: 5, padding: "6px 12px", background: "#f4f2ee", border: "1px solid #ddd9d0", borderRadius: 7, color: "#444440", fontSize: 11.5, textDecoration: "none" }
@@ -369,7 +370,7 @@ export default function Home() {
             <div style={sLabel}>Contact</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 11, color: "#555552" }}>
               <span>✉ etan.mincer@princeton.edu</span>
-              <span>🔗 <a href="https://linkedin.com/in/etan-mincer" target="_blank" rel="noreferrer" style={{ color: "#3b7cc9", textDecoration: "none" }}>LinkedIn</a></span>
+              <span>🔗 <a href="https://www.linkedin.com/in/etanmincer/" target="_blank" rel="noreferrer" style={{ color: "#3b7cc9", textDecoration: "none" }}>LinkedIn</a></span>
               <span>🐙 <a href="https://github.com/Emincer15" target="_blank" rel="noreferrer" style={{ color: "#3b7cc9", textDecoration: "none" }}>GitHub</a></span>
             </div>
           </div>
@@ -399,7 +400,11 @@ export default function Home() {
               <div style={secTitle}>About</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 22, alignItems: "flex-start" }}>
                 <img src="/about-photo.jpg" alt="Etan Mincer" style={{ width: 210, maxWidth: "100%", aspectRatio: "3 / 4", objectFit: "cover", borderRadius: 10, border: "1px solid #e8e5de", display: "block", flexShrink: 0 }} />
-                <p style={{ flex: 1, minWidth: 240, fontSize: 16, color: "#555552", lineHeight: 1.8, margin: 0 }}>{"I'm Etan Mincer, an Electrical and Computer Engineering student at Princeton University \uD83D\uDC05 with a focus on embedded systems \u26A1 and cybersecurity \uD83D\uDD12."}</p>
+                <div style={{ flex: 1, minWidth: 240 }}>
+                  <p style={aboutP}>{"I'm Etan Mincer, an Electrical and Computer Engineering student at Princeton University \uD83D\uDC05 with a focus on embedded systems \u26A1 and cybersecurity \uD83D\uDD12."}</p>
+                  <p style={aboutP}>I am interested in leveraging engineering technologies for purposeful, mission-driven change: ensuring people&apos;s safety and freedom, and protecting the democratic institutions that both depend on.</p>
+                  <p style={{ ...aboutP, marginBottom: 0 }}>That is what draws me to embedded systems and security in particular. They are the layers people rely on without thinking about them, and where a failure costs far more than convenience.</p>
+                </div>
               </div>
             </div>
           )}
