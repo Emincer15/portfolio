@@ -93,9 +93,9 @@ const projects = [
     award: "",
     photos: [] as string[], photoCaptions: [] as string[],
     desc: [
-      "Collaborated with researchers at Saprio Lab and Apple Health to develop personalized predictive models for surgical outcomes using electronic health records (EHR) and wearable data.",
-      "Employed machine learning techniques to analyze complex datasets, enhancing the accuracy of predictive models for patient risk stratification and surgical planning.",
-      "Utilized SQL and Python for data manipulation, analysis, and feature engineering, contributing to innovative research in precision health technology and advancing healthcare outcomes.",
+      "Collaborated with researchers at Saprio Lab and Apple Health to develop personalized predictive models for surgical outcomes using EHR and wearable data, leveraging large-scale datasets such as MIMIC-IV and AllofUs.",
+      "Employed machine learning techniques to analyze complex datasets, enhancing the accuracy of predictive models.",
+      "Utilized SQL and Python for data manipulation and analysis, contributing to innovative research in health technology.",
     ],
     links: [],
     tech: ["Python", "SQL", "Machine Learning", "EHR Data", "Wearable Data Analysis", "Data Science"],
