@@ -9,8 +9,14 @@ const WHOI_PHOTO_3 = "data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUND
 const WHOI_LOGO   = "/whoi-logo.jpg"
 const EZPARK_LOGO = "https://static.wixstatic.com/media/9efc18_e32b74c9c0e74dc2831522748542a7b7~mv2.jpeg/v1/fill/w_320,h_320,al_c,q_80,enc_avif,quality_auto/Free_Sample_By_Wix%20(1).jpeg"
 
-const SECTIONS = ["projects", "experience", "leadership", "education"] as const
+const SECTIONS = ["about", "projects", "experience", "education"] as const
 type Section = typeof SECTIONS[number]
+const SECTION_LABELS: Record<Section, string> = {
+  about: "About",
+  projects: "Main Projects",
+  experience: "Other Experience / Leadership",
+  education: "Education",
+}
 
 const COLORS: Record<string, string> = {
   c2: "#e8f4e8", c4: "#f5f0e0", c5: "#e0eef5",
@@ -20,9 +26,24 @@ const COLORS: Record<string, string> = {
 
 const projects = [
   {
-    id: "whoi", logo: WHOI_LOGO, logoBg: "#ffffff", color: "c5", redirect: null as string | null,
-    title: "Woods Hole Oceanographic Institute Internship",
-    date: "Summer 2024", category: "Marine Technology", award: "",
+    id: "saprio", logo: "/saprio-logo.jpg", logoBg: "#ffffff", color: "ciBlue",
+    redirect: null as string | null, thumb: "",
+    title: "Saprio Lab @ Princeton Precision Health", date: "May 2026 – Present", category: "Machine Learning / Healthcare",
+    award: "",
+    photos: [] as string[], photoCaptions: [] as string[],
+    desc: [
+      "Most surgical care still runs on population averages: a patient is told to expect a typical recovery, and problems are caught at the next scheduled visit. Recovery is deeply individual, and the gap between the expected trajectory and the actual one is exactly where complications hide. Predicting how a specific patient will recover, before or immediately after an operation, changes what clinicians can act on - directing prehabilitation to the patients who benefit most, timing discharge to readiness rather than to the calendar, and escalating monitoring for the few at genuine risk instead of everyone.",
+      "Wearables are what make that prediction tractable. A clinic visit samples a patient a handful of times a year; a wrist-worn device measures heart rate variability, sleep, and activity continuously, so every patient carries their own longitudinal baseline instead of being scored against a population norm. Deviation from that personal baseline is a far sharper signal than any absolute threshold, and combining it with EHR history turns surgical recovery into something that can be modeled per person. That is the opening for genuinely precision health: earlier detection, fewer unnecessary interventions, and care built on how this patient actually functions.",
+      "Closing that gap is the work I do at Saprio Lab. Alongside researchers at Princeton Precision Health and Apple Health, I build personalized predictive models of surgical outcomes from paired EHR and wearable data, drawing on large-scale datasets such as MIMIC-IV and All of Us.",
+      "Much of the effort goes into the data itself: SQL and Python to assemble cohorts and derive per-patient baselines out of raw wearable streams, then machine learning on top of that to test whether personal-baseline features predict recovery better than the clinical variables already in use.",
+    ],
+    links: [],
+    tech: ["Python", "SQL", "Machine Learning", "EHR Data", "Wearable Data Analysis", "Data Science"],
+  },
+  {
+    id: "whoi", logo: WHOI_LOGO, logoBg: "#ffffff", color: "c5", redirect: null as string | null, thumb: "/whoi-mark.png",
+    title: "Woods Hole Oceanographic Institution Internship",
+    date: "Aug 2024", category: "Marine Technology", award: "",
     photos: [WHOI_PHOTO_1, WHOI_PHOTO_2, WHOI_PHOTO_3],
     photoCaptions: ["Raspberry Pi + chartplotter", "WHALE AIS on Garmin", "3D-printed housing"],
     desc: [
@@ -39,14 +60,14 @@ const projects = [
   },
   {
     id: "ezpark", logo: EZPARK_LOGO, logoBg: "#f5f0e0", color: "c4",
-    redirect: null as string | null,
+    redirect: null as string | null, thumb: "",
     title: "E-Z Park", date: "Jan – May 2022", category: "Infrastructure / IoT",
     award: "Bronze Standard — CIJE Innovation Day 2022 · Engineering for Workplace Solutions Finalist",
     photos: [] as string[], photoCaptions: [] as string[],
     desc: [
       "E-Z Park is a smart parking lot management system designed to reduce the time drivers spend searching for available spaces — a major source of urban traffic congestion.",
       "The system uses infrared sensors placed above each parking spot to detect occupancy in real time. Data is collected by Arduino microcontrollers and transmitted wirelessly via NodeMCU (ESP8266) to a central display showing a live map of available spots.",
-      "The project was presented to New Jersey State Senators at the Teach NJ dinner and earned a Bronze Standard award at CIJE Innovation Day 2022.",
+      "The project was presented at the Teach NJ dinner and earned a Bronze Standard award at CIJE Innovation Day 2022.",
     ],
     links: [
       { label: "Project Site", url: "https://elianawolf1.wixsite.com/e-zpark" },
@@ -55,7 +76,7 @@ const projects = [
   },
   {
     id: "seatbelt", logo: "", logoBg: "#e8f4e8", color: "c2",
-    redirect: null as string | null,
+    redirect: null as string | null, thumb: "",
     title: "Seatbelt Secure", date: "Jan – May 2023", category: "Safety / IoT",
     award: "Presentation Award — CIJE Innovation Day 2023",
     photos: ["/carseat.jpg"] as string[],
@@ -71,8 +92,22 @@ const projects = [
     tech: ["Arduino", "Pressure Sensors", "RF Communication", "C++"],
   },
   {
+    id: "waterrepurposer", logo: "", logoBg: "#d8eff0", color: "ciTeal",
+    redirect: null as string | null, thumb: "",
+    title: "Water Repurposer", date: "2022", category: "Sustainability / IoT",
+    award: "1st Place — 2022 Hackathon",
+    photos: [] as string[], photoCaptions: [] as string[],
+    desc: [
+      "Household water waste is largely a routing problem. Water that has only been lightly used is clean enough for a garden bed or a toilet tank, but it goes down the same drain as everything else and leaves the building as sewage.",
+      "The Water Repurposer grades wastewater by how dirty it actually is and sends it where it can still do work: garden irrigation for the cleanest water, toilet supply for water that is no longer fit for plants, and the sewer only for what is too contaminated to reuse. A turbidity measurement device does the grading, so the decision is made from a real measurement rather than a fixed assumption about the source.",
+      "The project won 1st place at the 2022 Hackathon.",
+    ],
+    links: [],
+    tech: ["Turbidity Sensing", "Arduino", "Water Reuse"],
+  },
+  {
     id: "stemjournal", logo: "/stem-journal-cover.jpg", logoBg: "#f5edd8", color: "ciPurple",
-    redirect: null as string | null,
+    redirect: null as string | null, thumb: "",
     title: "STEM and Ethics Journal", date: "Sep 2023 – May 2025", category: "Publication / Leadership",
     award: "Founder & Editor in Chief",
     photos: [] as string[], photoCaptions: [] as string[],
@@ -87,18 +122,18 @@ const projects = [
     tech: ["Publishing", "Editing", "Layout Design", "Interviewing"],
   },
   {
-    id: "saprio", logo: "/saprio-logo.jpg", logoBg: "#ffffff", color: "ciBlue",
-    redirect: null as string | null,
-    title: "Saprio Lab @ Princeton Precision Health", date: "May – August 2026", category: "Machine Learning / Healthcare",
-    award: "",
+    id: "mikvah", logo: "", logoBg: "#f5e0dc", color: "ciCoral",
+    redirect: null as string | null, thumb: "",
+    title: "Mikvah Monitor", date: "Jan 2022", category: "Monitoring / IoT",
+    award: "Best in Engineering Design Process — CIJE Symposium (341 teams)",
     photos: [] as string[], photoCaptions: [] as string[],
     desc: [
-      "Collaborated with researchers at Saprio Lab and Apple Health to develop personalized predictive models for surgical outcomes using EHR and wearable data, leveraging large-scale datasets such as MIMIC-IV and AllofUs.",
-      "Employed machine learning techniques to analyze complex datasets, enhancing the accuracy of predictive models.",
-      "Utilized SQL and Python for data manipulation and analysis, contributing to innovative research in health technology.",
+      "A mikvah's kosher status depends on conditions that have to hold continuously, not just at the moment someone happens to inspect it. Checking by hand means a person physically going to look, and anything that drifts between those checks goes unnoticed until the next one.",
+      "The Mikvah Monitor closes that gap with a turbidity sensor that measures how clear the water actually is. An Arduino reads the sensor and a NodeMCU reports the reading over WiFi to a web page, so the state of the water can be checked from anywhere instead of in person.",
+      "The build won Best in Engineering Design Process at the CIJE symposium, judged across 341 teams.",
     ],
     links: [],
-    tech: ["Python", "SQL", "Machine Learning", "EHR Data", "Wearable Data Analysis", "Data Science"],
+    tech: ["Arduino", "Turbidity Sensor", "NodeMCU", "HTML"],
   },
 ]
 
@@ -108,6 +143,7 @@ const secTitle: React.CSSProperties = { fontSize: 10, fontWeight: 500, letterSpa
 const card: React.CSSProperties = { background: "#ffffff", border: "1px solid #e8e5de", borderRadius: 10, padding: "14px 16px", marginBottom: 10 }
 const sLabel: React.CSSProperties = { fontSize: 10, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "#aaa8a2", marginBottom: 7 }
 const tag: React.CSSProperties = { fontSize: 10.5, padding: "2px 8px", borderRadius: 20, border: "1px solid #ddd9d0", color: "#666660" }
+const backBtn: React.CSSProperties = { display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11.5, color: "#888884", cursor: "pointer", marginBottom: 14, padding: "4px 0", background: "none", border: "none" }
 const techTag: React.CSSProperties = { fontSize: 11, padding: "2px 9px", borderRadius: 20, border: "1px solid #ddd9d0", color: "#555552" }
 const linkBtn: React.CSSProperties = { display: "flex", alignItems: "center", gap: 5, padding: "6px 12px", background: "#f4f2ee", border: "1px solid #ddd9d0", borderRadius: 7, color: "#444440", fontSize: 11.5, textDecoration: "none" }
 
@@ -143,7 +179,14 @@ function ExpCard({ icon, iconBg, title, meta, bullets }: { icon: string; iconBg:
 }
 
 function ProjectThumb({ p }: { p: typeof projects[0] }) {
-  // Prefer photos as thumbnail; fall back to logo, then color block
+  // Explicit thumb wins; then photos, then logo, then color block
+  if (p.thumb) {
+    return (
+      <div style={{ height: 130, background: p.logoBg, display: "flex", alignItems: "center", justifyContent: "center", padding: 18 }}>
+        <img src={p.thumb} alt={p.title} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} />
+      </div>
+    )
+  }
   if (p.photos.length > 0) {
     return (
       <div style={{ height: 130, overflow: "hidden" }}>
@@ -163,11 +206,11 @@ function ProjectThumb({ p }: { p: typeof projects[0] }) {
   )
 }
 
-function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
+function ProjectDetail({ id, onBack, backLabel = "Main Projects" }: { id: string; onBack: () => void; backLabel?: string }) {
   const p = projects.find(x => x.id === id)!
   return (
     <div>
-      <button onClick={onBack} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11.5, color: "#888884", cursor: "pointer", marginBottom: 14, padding: "4px 0", background: "none", border: "none" }}>← All projects</button>
+      <button onClick={onBack} style={backBtn}>← {backLabel}</button>
       <div style={{ display: "flex", gap: 6, height: 180, borderRadius: 10, overflow: "hidden", background: p.logoBg }}>
         {p.photos.length > 0 ? (
           p.photos.map((src, i) => (
@@ -231,14 +274,49 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
   )
 }
 
+const HS_IDS = ["ezpark", "seatbelt", "waterrepurposer", "mikvah", "stemjournal"]
+
+function ProjectGrid({ items, onOpen }: { items: typeof projects; onOpen: (id: string) => void }) {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))", gap: 10 }}>
+      {items.map(p => (
+        <div key={p.id} style={{ background: "#ffffff", border: "1px solid #e8e5de", borderRadius: 10, overflow: "hidden", cursor: "pointer" }}
+          onClick={() => p.redirect ? window.open(p.redirect, "_blank") : onOpen(p.id)}>
+          <ProjectThumb p={p} />
+          <div style={{ padding: "11px 13px", borderTop: "1px solid #e8e5de" }}>
+            <div style={{ fontSize: 13, fontWeight: 500, color: "#1a1a18", marginBottom: 3 }}>{p.title}</div>
+            <div style={{ fontSize: 11, color: "#888884" }}>📅 {p.date}</div>
+            {p.award && <span style={{ ...awardPill, marginTop: 4, display: "inline-block" }}>🏆 {p.award.split("·")[0].trim()}</span>}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function ProjectsSection() {
   const [detailId, setDetailId] = useState<string | null>(null)
-  if (detailId) return <ProjectDetail id={detailId} onBack={() => setDetailId(null)} />
+  const [hsOpen, setHsOpen] = useState(false)
+  const featured = projects.filter(p => !HS_IDS.includes(p.id))
+  const highSchool = projects.filter(p => HS_IDS.includes(p.id))
+  if (detailId) {
+    const inHs = HS_IDS.includes(detailId)
+    return <ProjectDetail id={detailId} backLabel={inHs ? "High School Endeavors" : "Main Projects"} onBack={() => setDetailId(null)} />
+  }
+  if (hsOpen) {
+    return (
+      <div>
+        <button onClick={() => setHsOpen(false)} style={backBtn}>← Main Projects</button>
+        <div style={secTitle}>High School Endeavors</div>
+        <ProjectGrid items={highSchool} onOpen={setDetailId} />
+      </div>
+    )
+  }
   return (
     <div>
-      <div style={secTitle}>Projects</div>
+      <div style={secTitle}>Main Projects</div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))", gap: 10 }}>
-        {projects.map(p => (
+        {featured.map(p => (
           <div key={p.id} style={{ background: "#ffffff", border: "1px solid #e8e5de", borderRadius: 10, overflow: "hidden", cursor: "pointer" }}
             onClick={() => p.redirect ? window.open(p.redirect, "_blank") : setDetailId(p.id)}>
             <ProjectThumb p={p} />
@@ -249,13 +327,21 @@ function ProjectsSection() {
             </div>
           </div>
         ))}
+        <div style={{ background: "#ffffff", border: "1px solid #e8e5de", borderRadius: 10, overflow: "hidden", cursor: "pointer" }}
+          onClick={() => setHsOpen(true)}>
+          <div style={{ height: 130, background: COLORS.ciAmber, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 34 }}>🏫</div>
+          <div style={{ padding: "11px 13px", borderTop: "1px solid #e8e5de" }}>
+            <div style={{ fontSize: 13, fontWeight: 500, color: "#1a1a18", marginBottom: 3 }}>High School Endeavors</div>
+            <div style={{ fontSize: 11, color: "#888884" }}>📁 {highSchool.length} projects</div>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
 export default function Home() {
-  const [section, setSection] = useState<Section>("projects")
+  const [section, setSection] = useState<Section>("about")
   return (
     <div style={{ background: "#f4f2ee", color: "#1a1a18", fontFamily: "'Inter', sans-serif", fontSize: 13, lineHeight: 1.6, borderRadius: 12, overflow: "hidden", width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
       {/* TOP NAV */}
@@ -268,25 +354,21 @@ export default function Home() {
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         {/* SIDEBAR */}
   <div style={{ width: 240, flexShrink: 0, padding: "22px 18px", borderRight: "1px solid #e8e5de", background: "#faf9f6", overflowY: "auto", display: "flex", flexDirection: "column", gap: 20 }}>
-  <img src="/headshot.jpg" alt="Etan Mincer" style={{ width: 64, height: 64, minWidth: 64, minHeight: 64, borderRadius: "50%", objectFit: "cover", objectPosition: "center 10%", border: "2px solid #e8e5de", display: "block", flexShrink: 0 }} />
+  <img src="/avatar.jpg" alt="Etan Mincer" style={{ width: 64, height: 64, minWidth: 64, minHeight: 64, borderRadius: "50%", objectFit: "cover", objectPosition: "center", border: "2px solid #e8e5de", display: "block", flexShrink: 0 }} />
   <div>
   <div style={{ fontSize: 17, fontWeight: 500, color: "#1a1a18" }}>Etan A. Mincer</div>
-            <div style={{ fontSize: 11, color: "#888884", marginTop: 2 }}>Princeton ECE · Cybersecurity</div>
-          </div>
-          <div>
-            <div style={sLabel}>About</div>
-            <div style={{ fontSize: 11.5, color: "#555552", lineHeight: 1.65 }}>{"I'm Etan Mincer, an Electrical and Computer Engineering student at Princeton University \uD83D\uDC05 with a focus on embedded systems \u26A1 and cybersecurity \uD83D\uDD12."}</div>
+            <div style={{ fontSize: 11, color: "#888884", marginTop: 2 }}>Princeton ECE · Embedded Systems / Cybersecurity</div>
           </div>
           <div>
             <div style={sLabel}>Navigate</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-              {SECTIONS.map(s => <NavLink key={s} label={s.charAt(0).toUpperCase() + s.slice(1)} active={section === s} onClick={() => setSection(s)} />)}
+              {SECTIONS.map(s => <NavLink key={s} label={SECTION_LABELS[s]} active={section === s} onClick={() => setSection(s)} />)}
             </div>
           </div>
           <div>
             <div style={sLabel}>Contact</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 11, color: "#555552" }}>
-              <span>✉ em8052@princeton.edu</span>
+              <span>✉ etan.mincer@princeton.edu</span>
               <span>🔗 <a href="https://linkedin.com/in/etan-mincer" target="_blank" rel="noreferrer" style={{ color: "#3b7cc9", textDecoration: "none" }}>LinkedIn</a></span>
               <span>🐙 <a href="https://github.com/Emincer15" target="_blank" rel="noreferrer" style={{ color: "#3b7cc9", textDecoration: "none" }}>GitHub</a></span>
             </div>
@@ -294,7 +376,7 @@ export default function Home() {
           <div>
             <div style={sLabel}>Skills</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-              {["Java","Python","C","Linux","Arduino","SQL","Raspberry Pi","UART/I2C/SPI","Fusion360","Git","HTML/CSS"].map(t => <span key={t} style={tag}>{t}</span>)}
+              {["Python","Java","C","C++","SQL","Machine Learning","Linux","Git","Arduino","Raspberry Pi","KiCad","Fusion 360","UART/I2C/SPI","3D Printing","HTML/CSS"].map(t => <span key={t} style={tag}>{t}</span>)}
             </div>
           </div>
           <div>
@@ -312,29 +394,29 @@ export default function Home() {
         </div>
         {/* MAIN */}
         <div style={{ flex: 1, overflowY: "auto", padding: "26px 22px 48px" }}>
+          {section === "about" && (
+            <div>
+              <div style={secTitle}>About</div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 22, alignItems: "flex-start" }}>
+                <img src="/about-photo.jpg" alt="Etan Mincer" style={{ width: 210, maxWidth: "100%", aspectRatio: "3 / 4", objectFit: "cover", borderRadius: 10, border: "1px solid #e8e5de", display: "block", flexShrink: 0 }} />
+                <p style={{ flex: 1, minWidth: 240, fontSize: 16, color: "#555552", lineHeight: 1.8, margin: 0 }}>{"I'm Etan Mincer, an Electrical and Computer Engineering student at Princeton University \uD83D\uDC05 with a focus on embedded systems \u26A1 and cybersecurity \uD83D\uDD12."}</p>
+              </div>
+            </div>
+          )}
           {section === "projects" && <ProjectsSection />}
           {section === "experience" && (
             <div>
-              <div style={secTitle}>Technical Experience</div>
-              <ExpCard icon="⚡" iconBg={COLORS.ciBlue} title="Team Member — Princeton Electric Speedboating" meta={["📅 Oct 2025 – Present","📍 Princeton, NJ"]} bullets={["Building integrated system for high-performance marine vehicle using C for CAN-bus communication and vehicle control."]} />
-              <ExpCard icon="💡" iconBg={COLORS.ciGreen} title="Lead Software Developer — CIJE Engineering Program" meta={["📅 Sep 2021 – May 2025","📍 Paramus, NJ"]} bullets={["Built Mikvah monitoring device for kosher compliance — won Best in Engineering Design Process at CIJE symposium across 341 teams.","Fabricated smart car seat detecting unbuckled children via pressure sensors and RF communication.","Engineered turbidity measurement device for wastewater; won 1st place at 2022 Hackathon.","Assembled E-Z Park system with IR sensors, RFID, Arduinos & NodeMCUs; presented to NJ Senators at Teach NJ dinner."]} />
-              <ExpCard icon="🐋" iconBg={COLORS.ciTeal} title="Project Intern — MARS Lab, WHOI" meta={["📅 Aug 2024","📍 Woods Hole, MA"]} bullets={["Built Pi-based system transmitting whale detections to onboard chartplotter, eliminating auxiliary display devices.","Fetched data via RabbitMQ from cloud; sent to chartplotter over RS-232 serial connection.","Designed and 3D-printed housing using Fusion360; constructed AIS/NMEA sentences for chartplotter compatibility.","Authored 9-page replication documentation; presented in weekly cross-continental meetings."]} />
-            </div>
-          )}
-          {section === "leadership" && (
-            <div>
-              <div style={secTitle}>Leadership</div>
-              <ExpCard icon="📋" iconBg={COLORS.ciPurple} title="Assistant Project Manager — Tamid Consulting" meta={["📅 Dec 2025 – Present","📍 Princeton, NJ"]} bullets={["Organizing consulting projects with Israeli companies, overseeing task completion for 7–10 students."]} />
+              <div style={secTitle}>Other Experience / Leadership</div>
+              <ExpCard icon="⚡" iconBg={COLORS.ciBlue} title="Electrical Engineer — Princeton Electric Speedboating" meta={["📅 Oct 2025 – Present","📍 Princeton, NJ"]} bullets={["Designed innovative Low Voltage communication systems for manned-electrical speedboats, enhancing operational efficiency.","Assisted in the development of storage pipelines and SD card backup systems to ensure data integrity.","Utilized C++, KiCad, and coding skills to create reliable electrical engineering solutions."]} />
+              <ExpCard icon="📋" iconBg={COLORS.ciPurple} title="Consulting Project Manager — TAMID Group at Princeton" meta={["📅 Dec 2025 – Present","📍 Princeton, NJ","👥 Member Sep – Dec 2025"]} bullets={["Organizing consulting projects with Israeli companies, overseeing task completion for 7–10 students."]} />
               <ExpCard icon="📰" iconBg={COLORS.ciAmber} title="Founder & Editor in Chief — STEM and Ethics Journal" meta={["📅 Sep 2023 – May 2025","📍 Paramus, NJ"]} bullets={["Founded journal exploring STEM innovations and ethical implications; conducted scientist interviews.","Published 4 issues (~6 articles each), personally formatting and printing each edition."]} />
               <ExpCard icon="🤖" iconBg={COLORS.ciCoral} title="FTC Outreach Captain · VEX COO & Coding Captain — Frisch Cougears" meta={["📅 May 2022 – May 2025","📍 Paramus, NJ"]} bullets={["Led robotics initiatives at three elementary schools (~60 students), visiting biweekly.","Assisted FTC software including HuskyLens integration for autonomous object detection.","Oversaw five VEX teams (~40 students); designed competitions to benchmark performance."]} />
-              <ExpCard icon="🏆" iconBg={COLORS.ciBlue} title="Varsity Captain — College Bowl" meta={["📅 Sep 2022 – May 2025","📍 Paramus, NJ"]} bullets={["Managed tryouts; captained varsity team through an undefeated regular season."]} />
-              <ExpCard icon="🌐" iconBg={COLORS.ciGreen} title="Captain — Model UN" meta={["📅 Sep 2021 – May 2025","📍 Paramus, NJ"]} bullets={["Administered tryouts and team practices; represented four countries across four committees."]} />
             </div>
           )}
           {section === "education" && (
             <div>
               <div style={secTitle}>Education</div>
-              <ExpCard icon="🎓" iconBg={COLORS.ciPurple} title="Princeton University — B.S.E. Electrical & Computer Engineering" meta={["📅 Expected May 2029","📍 Princeton, NJ","🎯 Cybersecurity focus"]} bullets={["Multivariable Calculus · Linear Algebra · Advanced Physics (Mechanics & E&M) · Algorithms & Data Structures"]} />
+              <ExpCard icon="🎓" iconBg={COLORS.ciPurple} title="Princeton University — B.S.E. Electrical & Computer Engineering" meta={["📅 Expected May 2029","📍 Princeton, NJ","🎯 Embedded Systems / Cybersecurity focus"]} bullets={["Multivariable Calculus · Linear Algebra · Advanced Physics (Mechanics & E&M) · Algorithms & Data Structures"]} />
               <div style={card}>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 11, marginBottom: 5 }}>
                   <div style={{ width: 32, height: 32, borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0, background: COLORS.ciAmber }}>🏫</div>
