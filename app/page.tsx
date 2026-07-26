@@ -26,15 +26,15 @@ const COLORS: Record<string, string> = {
 
 const projects = [
   {
-    id: "saprio", logo: "/saprio-logo.jpg", logoBg: "#ffffff", color: "ciBlue",
+    id: "sapiro", logo: "/sapiro-logo.jpg", logoBg: "#ffffff", color: "ciBlue",
     redirect: null as string | null, thumb: "",
-    title: "Saprio Lab @ Princeton Precision Health", date: "May 2026 – Present", category: "Machine Learning / Healthcare",
+    title: "Sapiro Lab @ Princeton Precision Health", date: "May 2026 – Present", category: "Machine Learning / Healthcare",
     award: "",
     photos: [] as string[], photoCaptions: [] as string[],
     desc: [
       "Most surgical care still runs on population averages: a patient is told to expect a typical recovery, and problems are caught at the next scheduled visit. Recovery is deeply individual, and the gap between the expected trajectory and the actual one is exactly where complications hide. Predicting how a specific patient will recover, before or immediately after an operation, changes what clinicians can act on - directing prehabilitation to the patients who benefit most, timing discharge to readiness rather than to the calendar, and escalating monitoring for the few at genuine risk instead of everyone.",
       "Wearables are what make that prediction tractable. A clinic visit samples a patient a handful of times a year; a wrist-worn device measures heart rate variability, sleep, and activity continuously, so every patient carries their own longitudinal baseline instead of being scored against a population norm. Deviation from that personal baseline is a far sharper signal than any absolute threshold, and combining it with EHR history turns surgical recovery into something that can be modeled per person. That is the opening for genuinely precision health: earlier detection, fewer unnecessary interventions, and care built on how this patient actually functions.",
-      "Closing that gap is the work I do at Saprio Lab. Alongside researchers at Princeton Precision Health and Apple Health, I build personalized predictive models of surgical outcomes from paired EHR and wearable data, drawing on large-scale datasets such as MIMIC-IV and All of Us.",
+      "Closing that gap is the work I do at Sapiro Lab. Alongside researchers at Princeton Precision Health and Apple Health, I build personalized predictive models of surgical outcomes from paired EHR and wearable data, drawing on large-scale datasets such as MIMIC-IV and All of Us.",
       "Much of the effort goes into the data itself: SQL and Python to assemble cohorts and derive per-patient baselines out of raw wearable streams, then machine learning on top of that to test whether personal-baseline features predict recovery better than the clinical variables already in use.",
     ],
     links: [],
