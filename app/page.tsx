@@ -21,7 +21,6 @@ const COLORS: Record<string, string> = {
 const projects = [
   {
     id: "whoi", logo: WHOI_LOGO, logoBg: "#ffffff", color: "c5", redirect: null as string | null,
-    id: "whoi", logo: WHOI_LOGO, logoBg: "#0a1628", color: "c5", redirect: null as string | null,
     title: "Woods Hole Oceanographic Institute Internship",
     date: "Summer 2024", category: "Marine Technology", award: "",
     photos: [WHOI_PHOTO_1, WHOI_PHOTO_2, WHOI_PHOTO_3],
@@ -30,7 +29,6 @@ const projects = [
       "North Atlantic Right Whales are critically endangered — their main causes of death are entanglement and ship strikes. The MARS Lab at WHOI designed thermal cameras that detected these whales, displaying data on a separate tablet in the ship's cabin. This was inconvenient: tablets emit light, and captains prefer dark cabins at night to reduce glare.",
       "I was tasked with integrating whale location data directly into the boat's existing chartplotter, eliminating the auxiliary tablet. Using a Raspberry Pi, I received whale detections via RabbitMQ from the cloud, formatted them into NMEA sentences, and transmitted them over RS-232 serial to the chartplotter.",
       'After testing on a simulator, I validated the system on a real Garmin chartplotter, where detections appeared as AIS ATON targets labeled \'WHALE.\' I then designed and 3D-printed a housing in Fusion360 for easy cabin installation, collaborating with end users in both Woods Hole and Germany.',
-      "After testing on a simulator, I validated the system on a real Garmin chartplotter, where detections appeared as AIS ATON targets labeled \"WHALE.\" I then designed and 3D-printed a housing in Fusion360 for easy cabin installation, collaborating with end users in both Woods Hole and Germany.",
     ],
     links: [
       { label: "Video", url: "https://youtu.be/zwbGnCj7czU" },
@@ -150,11 +148,6 @@ function ProjectThumb({ p }: { p: typeof projects[0] }) {
     return (
       <div style={{ height: 130, overflow: "hidden" }}>
         <img src={p.photos[0]} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-  if (p.photos.length > 0) {
-    return (
-      <div style={{ height: 130, overflow: "hidden", position: "relative" }}>
-        <img src={p.photos[0]} alt={p.photoCaptions[0]} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-        {p.redirect && <span style={{ position: "absolute", bottom: 7, left: 8, fontSize: 9.5, padding: "1px 7px", borderRadius: 20, background: "rgba(255,255,255,.07)", color: "#777", border: "1px solid rgba(255,255,255,.07)" }}>↗ external</span>}
       </div>
     )
   }
@@ -185,9 +178,6 @@ function ProjectDetail({ id, onBack }: { id: string; onBack: () => void }) {
         ) : p.logo ? (
           <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, background: p.logoBg }}>
             <img src={p.logo} alt={p.title} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
-        {p.photos.map((src, i) => (
-          <div key={i} style={{ flex: 1, overflow: "hidden" }}>
-            <img src={src} alt={p.photoCaptions[i]} style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.85 }} />
           </div>
         ) : (
           <div style={{ flex: 1, background: COLORS[p.color] }} />
@@ -282,11 +272,6 @@ export default function Home() {
   <div>
   <div style={{ fontSize: 17, fontWeight: 500, color: "#1a1a18" }}>Etan A. Mincer</div>
             <div style={{ fontSize: 11, color: "#888884", marginTop: 2 }}>Princeton ECE · Cybersecurity</div>
-        <div style={{ width: 240, flexShrink: 0, padding: "22px 18px", borderRight: "1px solid #1e1e1c", overflowY: "auto", display: "flex", flexDirection: "column", gap: 20 }}>
-          <img src="/headshot.jpg" alt="Etan Mincer" style={{ width: 64, height: 64, minWidth: 64, minHeight: 64, borderRadius: "50%", objectFit: "cover", objectPosition: "center 10%", border: "2px solid #333330", display: "block", flexShrink: 0 }} />
-          <div>
-            <div style={{ fontSize: 17, fontWeight: 500, color: "#f0ede4" }}>Etan A. Mincer</div>
-            <div style={{ fontSize: 11, color: "#555552", marginTop: 2 }}>Princeton ECE · Cybersecurity</div>
           </div>
           <div>
             <div style={sLabel}>About</div>
